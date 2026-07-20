@@ -1233,6 +1233,38 @@ a:hover {
     color: #12100E;
 }
 
+/* Credits Bar */
+.credits-bar {
+    width: 100%;
+    padding: 12px 0;
+    background-color: #0A0908;
+    text-align: center;
+}
+.credits-bar p {
+    margin: 0;
+    font-size: 0.875rem;
+    color: #A8A29E;
+    direction: ltr;
+}
+.operix-link {
+    font-weight: bold;
+    text-decoration: none;
+    background-image: linear-gradient(to right, #B89C65 0%, #FFF8E7 50%, #B89C65 100%);
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: shimmer 2s linear infinite;
+    transition: all 0.3s ease;
+}
+.operix-link:hover {
+    filter: drop-shadow(0 0 8px rgba(184, 156, 101, 0.8));
+}
+@keyframes shimmer {
+    0% { background-position: 200% center; }
+    100% { background-position: 0% center; }
+}
+
 /* Responsive */
 @media (max-width: 992px) {
     .hero {

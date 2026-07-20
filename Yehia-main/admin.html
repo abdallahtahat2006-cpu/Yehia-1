@@ -103,7 +103,7 @@
                         <label>صورة اللوجو (شعار الموقع)</label>
                         <input type="file" accept="image/*" onchange="handleImageUpload(this)">
                         <input type="hidden" id="site_logo" class="t-i">
-                        <img id="site_logo_preview" class="img-preview" src="" style="width: 80px; height: 80px; margin-top: 10px; border-radius: 5px; display: none; object-fit: contain; border: 1px solid #ccc; background: white;">
+                        <img id="site_logo_preview" class="img-preview" src="" style="width: 80px; height: 80px; margin-top: 10px; border-radius: 5px; display: none; object-fit: contain; border: 1px solid #ccc; background: transparent;">
                     </div>
                 </div>
 
@@ -424,6 +424,18 @@
 
         const reader = new FileReader();
         reader.onload = function(e) {
+            const isLogo = inputEl.nextElementSibling && inputEl.nextElementSibling.id === 'site_logo';
+            
+            // If it's the site logo, preserve the original file as is without canvas modification
+            if (isLogo) {
+                const dataUrl = e.target.result;
+                inputEl.parentElement.querySelector('.t-i').value = dataUrl;
+                const preview = inputEl.parentElement.querySelector('.img-preview');
+                preview.src = dataUrl;
+                preview.style.display = 'block';
+                return;
+            }
+
             const img = new Image();
             img.onload = function() {
                 const canvas = document.createElement('canvas');
@@ -447,7 +459,10 @@
                 canvas.height = height;
                 const ctx = canvas.getContext('2d');
                 ctx.drawImage(img, 0, 0, width, height);
-                const dataUrl = canvas.toDataURL('image/jpeg', 0.8);
+                
+                let outFormat = (file.type === 'image/png' || file.type === 'image/webp') ? file.type : 'image/jpeg';
+                let quality = (outFormat === 'image/jpeg' || outFormat === 'image/webp') ? 0.8 : undefined;
+                const dataUrl = canvas.toDataURL(outFormat, quality);
                 
                 // Set the hidden input value
                 inputEl.parentElement.querySelector('.t-i').value = dataUrl;
