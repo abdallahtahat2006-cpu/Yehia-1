@@ -374,21 +374,36 @@
 
     <!-- Chatbot Floating Button & Window -->
     <div class="chatbot-floating-btn" id="chatbotBtn" onclick="toggleChatbot()">
-        <i class="fa-solid fa-robot"></i>
+        <svg width="60" height="60" viewBox="-10 -10 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M48 30C48 39.9 39.9 48 30 48C27.3 48 24.8 47.4 22.5 46.2L12 50.5L15.3 40C13.2 37.2 12 33.7 12 30C12 20.1 20.1 12 30 12C39.9 12 48 20.1 48 30Z" fill="#111" />
+            <circle cx="21" cy="30" r="2.5" fill="#dfbc68"/>
+            <circle cx="30" cy="30" r="2.5" fill="#dfbc68"/>
+            <circle cx="39" cy="30" r="2.5" fill="#dfbc68"/>
+            <path d="M44 5 L45.5 11.5 L52 13 L45.5 14.5 L44 21 L42.5 14.5 L36 13 L42.5 11.5 Z" fill="#FCE588"/>
+            <path d="M50 4 L50.7 7.3 L54 8 L50.7 8.7 L50 12 L49.3 8.7 L46 8 L49.3 7.3 Z" fill="#FCE588"/>
+        </svg>
     </div>
 
+    <!-- Chatbot Overlay -->
+    <div class="chatbot-overlay" id="chatbotOverlay" onclick="toggleChatbot()"></div>
+
     <div class="chatbot-window" id="chatbotWindow">
+        <span class="chatbot-close" onclick="toggleChatbot()"><i class="fa-solid fa-xmark"></i></span>
+        
         <div class="chatbot-header">
-            <span>مساعد الموقع الذكي</span>
-            <span class="chatbot-close" onclick="toggleChatbot()">&times;</span>
+            <h3>مساعد الدورة الذكي ✨</h3>
+            <p>اسألني أي شيء عن محاور الدورة أو كيفية التسجيل.</p>
         </div>
+        
         <div class="chatbot-messages" id="chatbotMessages">
-            <div class="chat-message bot">مرحباً! أنا المساعد الذكي لموقع المحامي يحيى رضوان. كيف يمكنني مساعدتك اليوم؟</div>
+            <div class="chat-message bot">أهلاً بك! كيف يمكنني مساعدتك اليوم؟</div>
         </div>
+        
         <div class="typing-indicator" id="typingIndicator">المساعد يكتب...</div>
+        
         <form class="chatbot-input-container" id="chatbotInputForm">
-            <input type="text" class="chatbot-input" id="chatInput" placeholder="اكتب سؤالك هنا..." autocomplete="off">
             <button type="submit" class="chatbot-send-btn"><i class="fa-solid fa-paper-plane"></i></button>
+            <input type="text" class="chatbot-input" id="chatInput" placeholder="اكتب سؤالك هنا..." autocomplete="off">
         </form>
     </div>
 
@@ -1345,7 +1360,9 @@
 
         window.toggleChatbot = function() {
             const win = document.getElementById('chatbotWindow');
-            win.style.display = win.style.display === 'flex' ? 'none' : 'flex';
+            const overlay = document.getElementById('chatbotOverlay');
+            win.classList.toggle('active');
+            if(overlay) overlay.classList.toggle('active');
         };
 
         function addChatMessage(role, content) {
