@@ -1,0 +1,1512 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دورة الحماية من الابتزاز الإلكتروني</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="logo/aaaa.jpg.jpeg?v=3" type="image/jpeg" class="dyn_site_logo">
+    
+    <!-- SEO & Social Media Sharing (Open Graph) -->
+    <meta name="description" content="احمِ نفسك وأسرتك، وافهم كيف تتعامل مع الابتزاز الإلكتروني قانونياً وتقنياً ونفسياً قبل وبعد التهديد.">
+    <meta property="og:title" content="دورة الحماية من الابتزاز الإلكتروني">
+    <meta property="og:description" content="احمِ نفسك وأسرتك، وافهم كيف تتعامل مع الابتزاز الإلكتروني.">
+    <meta property="og:image" content="logo/aaaa.jpg.jpeg" class="dyn_site_logo">
+    <meta property="og:url" content="">
+    <meta property="og:type" content="website">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="دورة الحماية من الابتزاز الإلكتروني">
+    <meta name="twitter:description" content="احمِ نفسك وأسرتك، وافهم كيف تتعامل مع الابتزاز الإلكتروني.">
+    <meta name="twitter:image" content="logo/aaaa.jpg.jpeg" class="dyn_site_logo">
+    <!-- Google Fonts: Cairo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Supabase JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1879911229646791');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1879911229646791&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+</head>
+<body>
+
+    <!-- Navbar Section -->
+    <nav class="navbar">
+        <div class="nav-logo">
+            <!-- Using the logo from the local directory -->
+            <img src="logo/aaaa.jpg.jpeg" alt="شعار الدورة" class="logo-img dyn_site_logo">
+        </div>
+        <div class="nav-menu" id="nav-menu">
+            <ul class="nav-links">
+                <li><a href="#hero">عن الدورة</a></li>
+                <li><a href="#trainers">المدربين</a></li>
+                <li><a href="#curriculum">محاور الدورة</a></li>
+                <li><a href="#faq">الأسئلة الشائعة</a></li>
+            </ul>
+            <div class="nav-cta" id="nav-cta-container">
+                <a href="#login" class="btn-outline-login" id="loginBtn">تسجيل الدخول</a>
+                <a href="#register" class="btn-primary">اشترك الآن</a>
+            </div>
+        </div>
+        <div class="menu-toggle" id="mobile-menu">
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero" id="hero">
+        <div class="hero-content">
+            <h1 id="dyn_hero_title">دورة الحماية من الابتزاز الإلكتروني وكيفية التعامل معه</h1>
+            <p id="dyn_hero_subtitle">احمِ نفسك وأسرتك، وافهم كيف تتعامل مع الابتزاز الإلكتروني قانونياً وتقنياً ونفسياً قبل وبعد التهديد.</p>
+            
+            <div class="badges">
+                <span class="badge">محور قانوني</span>
+                <span class="badge">محور أمن سيبراني</span>
+                <span class="badge">محور نفسي</span>
+            </div>
+
+            <div class="hero-cta-container">
+                <a href="#register" class="btn-primary" id="dyn_hero_cta_text">اشترك الآن بسعر الإطلاق (700 ج.م)</a>
+                <span class="hero-cta-hint" id="dyn_hero_cta_hint">دورة تعليمية وتوعوية، بادر بحجز مكانك.</span>
+            </div>
+        </div>
+        <div class="hero-video-wrapper">
+            <iframe id="dyn_hero_video_url" src="https://www.youtube.com/embed/znXb9dH_fcA" class="hero-video" style="border: none; border-radius: 12px; width: 100%; aspect-ratio: 16/9;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="features-header">
+            <h2 id="dyn_features_header_title">لماذا هذه الدورة مختلفة؟</h2>
+            <p id="dyn_features_header_subtitle">لأن الابتزاز الإلكتروني ليس قانوناً فقط... وليس أمناً سيبرانياً فقط... وليس دعماً نفسياً فقط. الضحية تحتاج 3 أشياء في نفس الوقت:</p>
+        </div>
+        <div class="features-grid" id="dyn_features_grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fa-solid fa-scale-balanced"></i>
+                </div>
+                <h3>1. تعرف حقك بالقانون</h3>
+                <p>للحفاظ على الدليل، وعمل محضر سليم، وفهم الطريق القانوني.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <h3>2. تحمي نفسك تقنياً</h3>
+                <p>لتجنب الاختراق، والروابط المزيفة، وحماية حساباتك وأجهزتك.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fa-solid fa-brain"></i>
+                </div>
+                <h3>3. تتعامل نفسياً مع الضغط</h3>
+                <p>للسيطرة على الخوف، وعدم الخضوع لسيطرة المبتز، والتعافي بعد الأزمة.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trainers Section -->
+    <section class="trainers" id="trainers">
+        <div class="trainers-header">
+            <h2 id="dyn_trainers_header_title">خبراء الدورة</h2>
+        </div>
+        <div class="trainers-grid" id="dyn_trainers_grid">
+            <!-- Card 1 -->
+            <div class="trainer-card">
+                <div class="trainer-img-wrapper">
+                    <img src="مدربين/yehia.jpg.jpeg" alt="المحامي يحيى رضوان" class="trainer-img">
+                </div>
+                <div class="trainer-info">
+                    <h3>المحامي يحيى رضوان</h3>
+                    <p>محامٍ متخصص في جرائم الإنترنت والابتزاز الإلكتروني، ومؤسس مبادرة "معًا ضد جرائم الإنترنت".</p>
+                </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="trainer-card">
+                <div class="trainer-img-wrapper">
+                    <img src="مدربين/abdelrazek.jpg.jpeg" alt="م/ عبدالرازق علي" class="trainer-img">
+                </div>
+                <div class="trainer-info">
+                    <h3>م/ عبدالرازق علي</h3>
+                    <p>مدير وحدة الأمن السيبراني بخبرة 25 عاماً، ومدرب دولي معتمد في تأمين الشبكات المعلوماتية.</p>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="trainer-card">
+                <div class="trainer-img-wrapper">
+                    <img src="مدربين/hala.jpg.jpeg" alt="د/ هالة فؤاد" class="trainer-img">
+                </div>
+                <div class="trainer-info">
+                    <h3>د/ هالة فؤاد</h3>
+                    <p>دكتورة صحة نفسية متخصصة في التعامل مع الصدمات، الضغط النفسي، والتعافي بعد الأزمات.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Curriculum Section (Accordion) -->
+    <section class="curriculum" id="curriculum">
+        <div class="curriculum-header">
+            <h2 id="dyn_curriculum_header_title">محاور الدورة: ماذا ستتعلم؟</h2>
+        </div>
+        <div class="curriculum-container" id="dyn_curriculum_container">
+            <!-- Accordion Item 1 -->
+            <div class="accordion-item">
+                <button class="accordion-header">
+                    <span class="accordion-title">الوحدة الأولى: فهم الابتزاز الإلكتروني</span>
+                    <span class="accordion-icon"><i class="fa-solid fa-plus"></i></span>
+                </button>
+                <div class="accordion-content">
+                    <p>ما هو؟، لماذا يقع الضحايا؟، كيف يفكر المبتز؟، الفرق بين التهديد والابتزاز.</p>
+                </div>
+            </div>
+            <!-- Accordion Item 2 -->
+            <div class="accordion-item">
+                <button class="accordion-header">
+                    <span class="accordion-title">الوحدة الثانية: أول تصرف عند التهديد</span>
+                    <span class="accordion-icon"><i class="fa-solid fa-plus"></i></span>
+                </button>
+                <div class="accordion-content">
+                    <p>ماذا تفعل في أول ساعة؟، ماذا لا تفعل؟، لماذا لا تتصرف بخوف؟، كيف تحفظ الأدلة؟</p>
+                </div>
+            </div>
+            <!-- Accordion Item 3 -->
+            <div class="accordion-item">
+                <button class="accordion-header">
+                    <span class="accordion-title">الوحدة الثالثة: الأدلة الرقمية</span>
+                    <span class="accordion-icon"><i class="fa-solid fa-plus"></i></span>
+                </button>
+                <div class="accordion-content">
+                    <p>ما معنى الدليل الرقمي؟، ما الذي يجب حفظه؟، أخطاء تضعف الدليل.</p>
+                </div>
+            </div>
+            <!-- Accordion Item 4 -->
+            <div class="accordion-item">
+                <button class="accordion-header">
+                    <span class="accordion-title">الوحدة الرابعة: الطريق القانوني</span>
+                    <span class="accordion-icon"><i class="fa-solid fa-plus"></i></span>
+                </button>
+                <div class="accordion-content">
+                    <p>متى تتوجه للجهات؟، كيفية تحرير المحضر ومتابعته، دور النيابة، التعويض والعقوبة.</p>
+                </div>
+            </div>
+            <!-- Accordion Item 5 -->
+            <div class="accordion-item">
+                <button class="accordion-header">
+                    <span class="accordion-title">الوحدة الخامسة: حماية الحسابات والأجهزة</span>
+                    <span class="accordion-icon"><i class="fa-solid fa-plus"></i></span>
+                </button>
+                <div class="accordion-content">
+                    <p>حماية الهاتف والبريد ووسائل التواصل، كلمات المرور، المصادقة الثنائية.</p>
+                </div>
+            </div>
+            <!-- Accordion Item 6 -->
+            <div class="accordion-item">
+                <button class="accordion-header">
+                    <span class="accordion-title">الوحدة السادسة: فهم طرق الاختراق الحديثة</span>
+                    <span class="accordion-icon"><i class="fa-solid fa-plus"></i></span>
+                </button>
+                <div class="accordion-content">
+                    <p>الروابط المزيفة، الصفحات الوهمية، الهندسة الاجتماعية.</p>
+                </div>
+            </div>
+            <!-- Accordion Item 7 -->
+            <div class="accordion-item">
+                <button class="accordion-header">
+                    <span class="accordion-title">الوحدة السابعة: التعامل النفسي وقت الابتزاز</span>
+                    <span class="accordion-icon"><i class="fa-solid fa-plus"></i></span>
+                </button>
+                <div class="accordion-content">
+                    <p>السيطرة على الخوف، التعامل مع التهديد، تعامل الأهل مع الضحية.</p>
+                </div>
+            </div>
+            <!-- Accordion Item 8 -->
+            <div class="accordion-item">
+                <button class="accordion-header">
+                    <span class="accordion-title">الوحدة الثامنة: التعافي بعد الأزمة</span>
+                    <span class="accordion-icon"><i class="fa-solid fa-plus"></i></span>
+                </button>
+                <div class="accordion-content">
+                    <p>التعامل مع الصدمة، الرجوع للحياة، بناء الثقة، الدعم النفسي.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="faq-header">
+            <h2 id="dyn_faq_header_title">أسئلة شائعة</h2>
+        </div>
+        <div class="faq-grid" id="dyn_faq_grid">
+            <!-- FAQ Item 1 -->
+            <div class="accordion-item faq-item">
+                <button class="accordion-header">
+                    <span class="accordion-title">هل الدورة للمصريين فقط؟</span>
+                    <span class="accordion-icon"><i class="fa-solid fa-plus"></i></span>
+                </button>
+                <div class="accordion-content">
+                    <p>الدورة مفيدة للجمهور العربي عموماً في الفهم والحماية، لكن الإجراءات القانونية الدقيقة قد تختلف حسب الدولة.</p>
+                </div>
+            </div>
+            <!-- FAQ Item 2 -->
+            <div class="accordion-item faq-item">
+                <button class="accordion-header">
+                    <span class="accordion-title">هل تضمن الدورة إيقاف المبتز؟</span>
+                    <span class="accordion-icon"><i class="fa-solid fa-plus"></i></span>
+                </button>
+                <div class="accordion-content">
+                    <p>لا، الدورة تعليمية وتساعدك على حماية نفسك والأدلة ومعرفة الطريق، لكن لا تضمن نتيجة قانونية محددة.</p>
+                </div>
+            </div>
+            <!-- FAQ Item 3 -->
+            <div class="accordion-item faq-item">
+                <button class="accordion-header">
+                    <span class="accordion-title">أشتري الدورة أم أحجز استشارة؟</span>
+                    <span class="accordion-icon"><i class="fa-solid fa-plus"></i></span>
+                </button>
+                <div class="accordion-content">
+                    <p>للتعلم والوقاية: الدورة مناسبة. إذا كان لديك حالة فعلية تحتاج قراراً حسب الأدلة، فالاستشارة القانونية أنسب.</p>
+                </div>
+            </div>
+            <!-- FAQ Item 4 -->
+            <div class="accordion-item faq-item">
+                <button class="accordion-header">
+                    <span class="accordion-title">هل تناسب أولياء الأمور؟</span>
+                    <span class="accordion-icon"><i class="fa-solid fa-plus"></i></span>
+                </button>
+                <div class="accordion-content">
+                    <p>نعم جداً، لفهم كيفية حماية الأبناء والتعامل معهم وقت الأزمات بدون عنف أو ترهيب.</p>
+                </div>
+            </div>
+            <!-- FAQ Item 5 -->
+            <div class="accordion-item faq-item">
+                <button class="accordion-header">
+                    <span class="accordion-title">هل الدورة تعلم الاختراق؟</span>
+                    <span class="accordion-icon"><i class="fa-solid fa-plus"></i></span>
+                </button>
+                <div class="accordion-content">
+                    <p>لا، الدورة تعلم الحماية وتوعي بأساليب المخترقين لتجنبها، ولا تقدم أدوات للاختراق.</p>
+                </div>
+            </div>
+            <!-- FAQ Item 6 -->
+            <div class="accordion-item faq-item">
+                <button class="accordion-header">
+                    <span class="accordion-title">ما هو سعر الدورة؟</span>
+                    <span class="accordion-icon"><i class="fa-solid fa-plus"></i></span>
+                </button>
+                <div class="accordion-content">
+                    <p>السعر الأساسي 4500 جنيه، وسعر الإطلاق الحالي 700 جنيه لأول 100 مشترك.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Founder Section -->
+    <section class="founder-section" id="founder">
+        <div class="founder-container">
+            <div class="founder-info">
+                <img src="Yehiya picture/yehia.jpg.jpeg" alt="المحامي يحيى رضوان" class="founder-image">
+                <div class="founder-text">
+                    <h3>المحامي يحيى رضوان</h3>
+                    <p>مؤسس مبادرة "معاً ضد جرائم الإنترنت". للمزيد من النصائح القانونية، يسعدني تواصلكم عبر منصاتي:</p>
+                </div>
+            </div>
+            <div class="founder-links">
+                <a href="https://qanonmasri.com/" target="_blank" class="btn-founder">
+                    <i class="fa-solid fa-globe"></i> موقع المقالات
+                </a>
+                <a href="https://www.facebook.com/share/g/1GN9jxSsJt/" target="_blank" class="btn-founder">
+                    <i class="fa-solid fa-users"></i> مجتمع المبادرة
+                </a>
+                <a href="https://www.facebook.com/share/1DpsU2YCJ1/" target="_blank" class="btn-founder">
+                    <i class="fa-brands fa-facebook"></i> فيسبوك
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration / CTA Section -->
+    <section class="cta-section" id="register">
+        <div class="cta-container">
+            <h2 id="dyn_cta_section_title">لا تنتظر حتى تقع المشكلة.. احمِ نفسك وأسرتك الآن</h2>
+            <div class="price-box">
+                <p class="old-price" id="dyn_cta_old_price">4500 ج.م</p>
+                <div class="new-price-wrapper">
+                    <span class="new-price" id="dyn_cta_new_price">700</span>
+                    <span class="currency">ج.م</span>
+                </div>
+                <p class="price-subtitle" id="dyn_cta_subtitle">لأول 100 مشترك فقط!</p>
+                <a href="#register" class="btn-large pulse-hover" id="dyn_cta_button_text">اشترك الآن بسعر الإطلاق</a>
+            </div>
+            <p class="cta-note" id="dyn_cta_note">الدورة تعليمية وتوعوية، وكل حالة تختلف حسب الوقائع والأدلة.</p>
+        </div>
+    </section>
+
+    <!-- Chatbot Floating Button & Window -->
+    <div class="chatbot-floating-btn" id="chatbotBtn" onclick="toggleChatbot()">
+        <i class="fa-solid fa-robot"></i>
+    </div>
+
+    <div class="chatbot-window" id="chatbotWindow">
+        <div class="chatbot-header">
+            <span>مساعد الموقع الذكي</span>
+            <span class="chatbot-close" onclick="toggleChatbot()">&times;</span>
+        </div>
+        <div class="chatbot-messages" id="chatbotMessages">
+            <div class="chat-message bot">مرحباً! أنا المساعد الذكي لموقع المحامي يحيى رضوان. كيف يمكنني مساعدتك اليوم؟</div>
+        </div>
+        <div class="typing-indicator" id="typingIndicator">المساعد يكتب...</div>
+        <form class="chatbot-input-container" id="chatbotInputForm">
+            <input type="text" class="chatbot-input" id="chatInput" placeholder="اكتب سؤالك هنا..." autocomplete="off">
+            <button type="submit" class="chatbot-send-btn"><i class="fa-solid fa-paper-plane"></i></button>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="footer-logo-wrapper">
+                    <img src="logo/2.png" alt="شعار الدورة" class="footer-logo">
+                </div>
+                <p>مبادرة معاً ضد جرائم الإنترنت.</p>
+            </div>
+            <div class="footer-col">
+                <h3>عندك حالة ابتزاز بالفعل؟</h3>
+                <p>لو عندك تهديد حالي، الاستشارة القانونية هي الأنسب لتقييم أدلتك.</p>
+                <a href="https://wa.me/201094343432" target="_blank" class="btn-outline" id="dyn_wa_consultation_link">احجز استشارة قانونية</a>
+            </div>
+            <div class="footer-col">
+                <p class="footer-warning">هذه الدورة توعوية ولا تضمن إيقاف المبتز. الحالات العاجلة تحتاج استشارة منفصلة.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>جميع الحقوق محفوظة &copy; 2026 - دورة الحماية من الابتزاز الإلكتروني</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/201094343432" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="تواصل معنا عبر واتساب" id="dyn_wa_floating_link">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+
+    <script>
+        // Mobile Menu Logic
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+
+        mobileMenu.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked
+        const navItems = document.querySelectorAll('.nav-links a, .nav-cta a');
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (event) => {
+            if (navMenu.classList.contains('active') && !navMenu.contains(event.target) && !mobileMenu.contains(event.target)) {
+                navMenu.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            }
+        });
+
+        // Custom Play Button Logic for the Hero Video
+        const video = document.querySelector('.hero-video');
+        const playBtn = document.querySelector('.play-overlay');
+        
+        if(video && playBtn) {
+            playBtn.addEventListener('click', () => {
+                video.play();
+                playBtn.style.display = 'none';
+            });
+            video.addEventListener('play', () => {
+                playBtn.style.display = 'none';
+            });
+            video.addEventListener('pause', () => {
+                playBtn.style.display = 'flex';
+            });
+        }
+
+        // Scrollspy Logic
+        const sections = document.querySelectorAll("header[id], section[id]");
+        const navLinks = document.querySelectorAll(".nav-links a");
+
+        window.addEventListener("scroll", () => {
+            let current = "";
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 150) {
+                    current = section.getAttribute("id");
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove("active");
+                if (link.getAttribute("href") === `#${current}`) {
+                    link.classList.add("active");
+                }
+            });
+        });
+
+        // Accordion Logic
+        const accordionHeaders = document.querySelectorAll('.accordion-header');
+        accordionHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                const isActive = item.classList.contains('active');
+                
+                // Close all others
+                document.querySelectorAll('.accordion-item').forEach(child => {
+                    child.classList.remove('active');
+                    const childIcon = child.querySelector('.fa-solid');
+                    if(childIcon) {
+                        childIcon.classList.remove('fa-minus');
+                        childIcon.classList.add('fa-plus');
+                    }
+                    child.querySelector('.accordion-content').style.maxHeight = null;
+                });
+
+                // Toggle current
+                if (!isActive) {
+                    item.classList.add('active');
+                    const icon = header.querySelector('.fa-solid');
+                    if(icon) {
+                        icon.classList.remove('fa-plus');
+                        icon.classList.add('fa-minus');
+                    }
+                    const content = item.querySelector('.accordion-content');
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            });
+        });
+
+        // Modal Logic will be moved below
+    </script>
+
+    <!-- Registration Modal -->
+    <div class="modal-overlay" id="registerModal">
+        <div class="modal-box">
+            <button class="close-modal" id="closeModal">&times;</button>
+            <div class="modal-header">
+                <h2>إتمام التسجيل في الدورة</h2>
+                <p>يرجى تعبئة البيانات وإرفاق إثبات الدفع.</p>
+            </div>
+            
+            <form class="modal-form" id="subscriptionForm">
+                <div class="form-group">
+                    <label>الاسم الكامل</label>
+                    <input type="text" id="regFullName" placeholder="اكتب اسمك الثلاثي" required>
+                </div>
+                <div class="form-group">
+                    <label>رقم الهاتف / الواتساب</label>
+                    <input type="tel" id="regPhone" placeholder="01xxxxxxxxx" required>
+                </div>
+                
+                <div class="payment-section">
+                    <h3 id="paymentModalTitle">اختر طريقة الدفع (جاري التحميل...)</h3>
+                    <div class="payment-methods" id="dynamicPaymentMethods">
+                        <!-- Filled by JS -->
+                    </div>
+                </div>
+
+                <div class="proof-section">
+                    <div class="form-group">
+                        <label>أدخل الرقم المحول منه (أو رقم العملية)</label>
+                        <input type="text" id="transferNumber" placeholder="رقم الموبايل أو رقم العملية" required>
+                    </div>
+                    <div class="form-group">
+                        <label>ارفع صورة وصل التحويل هنا</label>
+                        <div class="file-upload-box">
+                            <input type="file" id="receipt" accept="image/*" required>
+                            <i class="fa-solid fa-cloud-arrow-up" id="receiptIcon"></i>
+                            <p id="receiptText">اضغط لاختيار صورة الوصل</p>
+                            <img id="receiptPreview" src="" style="display: none; max-width: 100%; max-height: 200px; border-radius: 5px; margin-top: 10px; object-fit: contain;">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn-submit" id="submitSubscriptionBtn">تأكيد التسجيل وإرسال الإثبات</button>
+                    <p class="modal-note">ملاحظة: بعد تأكيد التسجيل، يرجى التواصل معنا عبر الواتساب لتفعيل الحساب وإرسال رابط الدورة.</p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal-overlay" id="loginModal">
+        <div class="modal-box login-box">
+            <button class="close-modal" id="closeLoginModal">&times;</button>
+            <div class="modal-header">
+                <h2 class="login-title">تسجيل الدخول</h2>
+                <p>مرحباً بعودتك! أدخل بياناتك لمتابعة التعلم.</p>
+            </div>
+            
+            <form class="login-form" id="supabaseLoginForm">
+                <button type="button" class="btn-google" id="googleLoginBtn">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google Logo">
+                    تسجيل الدخول بواسطة Google
+                </button>
+                
+                <div class="auth-divider">أو بالبريد الإلكتروني</div>
+
+                <div class="form-group">
+                    <label>البريد الإلكتروني</label>
+                    <input type="email" class="login-input" id="loginEmail" placeholder="البريد الإلكتروني" required>
+                </div>
+                <div class="form-group">
+                    <label>كلمة المرور</label>
+                    <div class="password-wrapper">
+                        <input type="password" class="login-input" id="loginPassword" placeholder="كلمة المرور" required>
+                        <i class="fa-regular fa-eye toggle-password"></i>
+                    </div>
+                </div>
+                <div class="forgot-password">
+                    <a href="#">نسيت كلمة المرور؟</a>
+                </div>
+                
+                <button type="submit" class="btn-submit login-submit" id="emailLoginBtn">دخول</button>
+                
+                <p class="login-switch">
+                    ليس لديك حساب؟ <a href="#" id="switchToSignup">إنشاء حساب</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div class="modal-overlay" id="signupModal">
+        <div class="modal-box login-box">
+            <button class="close-modal" id="closeSignupModal">&times;</button>
+            <div class="modal-header">
+                <h2 class="login-title">إنشاء حساب جديد</h2>
+                <p>سجل معنا للوصول إلى الدورة.</p>
+            </div>
+            
+            <form class="login-form" id="supabaseSignupForm">
+                <div class="form-group">
+                    <label>البريد الإلكتروني</label>
+                    <input type="email" class="login-input" id="signupEmail" placeholder="البريد الإلكتروني" required>
+                </div>
+                <div class="form-group">
+                    <label>رقم الهاتف</label>
+                    <input type="tel" class="login-input" id="signupPhone" placeholder="رقم الهاتف" required>
+                </div>
+                <div class="form-group">
+                    <label>كلمة المرور</label>
+                    <input type="password" class="login-input" id="signupPassword" placeholder="كلمة المرور (6 أحرف على الأقل)" required minlength="6">
+                </div>
+                <div class="form-group">
+                    <label>تأكيد كلمة المرور</label>
+                    <input type="password" class="login-input" id="signupConfirmPassword" placeholder="تأكيد كلمة المرور" required minlength="6">
+                </div>
+                
+                <button type="submit" class="btn-submit login-submit" id="emailSignupBtn">إنشاء الحساب</button>
+                
+                <p class="login-switch">
+                    لديك حساب بالفعل؟ <a href="#" id="switchToLogin">تسجيل الدخول</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- WhatsApp Success Modal -->
+    <div class="modal-overlay" id="whatsappSuccessModal">
+        <div class="modal-box" style="text-align: center; padding: 40px 20px;">
+            <button class="close-modal" id="closeWhatsappModal">&times;</button>
+            <div style="font-size: 60px; color: #25D366; margin-bottom: 20px;">
+                <i class="fa-brands fa-whatsapp"></i>
+            </div>
+            <h2 style="margin-top: 0;">تم إرسال طلبك بنجاح! 🎉</h2>
+            <p style="font-size: 18px; margin-bottom: 30px;">
+                الرجاء التواصل معنا عبر الواتساب لتأكيد الدفع وتفعيل اشتراكك فوراً لتتمكن من الوصول لمحتوى الدورة.
+            </p>
+            <a href="https://wa.me/201021469038" target="_blank" class="btn-primary wa_activation_link" style="background: #25D366; border-color: #25D366; display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-size: 18px; padding: 15px 30px; text-decoration: none;">
+                <i class="fa-brands fa-whatsapp"></i> تواصل عبر الواتساب الآن
+            </a>
+        </div>
+    </div>
+
+    <!-- WhatsApp Error Modal (Already Subscribed) -->
+    <div class="modal-overlay" id="whatsappErrorModal">
+        <div class="modal-box" style="text-align: center; padding: 40px 20px;">
+            <button class="close-modal" id="closeWhatsappErrorModal">&times;</button>
+            <div style="font-size: 60px; color: #dc3545; margin-bottom: 20px;">
+                <i class="fa-solid fa-circle-exclamation"></i>
+            </div>
+            <h2 style="margin-top: 0;">طلب مسجل مسبقاً!</h2>
+            <p style="font-size: 18px; margin-bottom: 30px;">
+                لقد قمت بإرسال طلب اشتراك من هذا الحساب سابقاً. يرجى التواصل معنا عبر الواتساب لتفعيل اشتراكك أو حل أي مشكلة.
+            </p>
+            <a href="https://wa.me/201021469038" target="_blank" class="btn-primary wa_activation_link" style="background: #25D366; border-color: #25D366; display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-size: 18px; padding: 15px 30px; text-decoration: none;">
+                <i class="fa-brands fa-whatsapp"></i> تواصل عبر الواتساب الآن
+            </a>
+        </div>
+    </div>
+
+
+
+    <script>
+        // Modal Logic
+        const registerModal = document.getElementById('registerModal');
+        const closeModal = document.getElementById('closeModal');
+        const registerLinks = document.querySelectorAll('a[href="#register"]');
+        
+        registerLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                registerModal.classList.add('active');
+                // Close mobile menu if open
+                const navMenu = document.getElementById('nav-menu');
+                const mobileMenu = document.getElementById('mobile-menu');
+                if (navMenu && navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                }
+            });
+        });
+
+        if (closeModal) {
+            closeModal.addEventListener('click', () => {
+                registerModal.classList.remove('active');
+            });
+        }
+
+        if (registerModal) {
+            registerModal.addEventListener('click', (e) => {
+                if (e.target === registerModal) {
+                    registerModal.classList.remove('active');
+                }
+            });
+        }
+
+
+
+        // Login Modal Logic
+        const loginModal = document.getElementById('loginModal');
+        const loginBtn = document.getElementById('loginBtn');
+        const closeLoginModal = document.getElementById('closeLoginModal');
+        const switchToRegister = document.getElementById('switchToRegister');
+
+        const signupModal = document.getElementById('signupModal');
+        const switchToSignup = document.getElementById('switchToSignup');
+        const switchToLogin = document.getElementById('switchToLogin');
+        const closeSignupModal = document.getElementById('closeSignupModal');
+
+        if (loginBtn && loginModal) {
+            loginBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                loginModal.classList.add('active');
+                const navMenu = document.getElementById('nav-menu');
+                const mobileMenu = document.getElementById('mobile-menu');
+                if (navMenu && navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                }
+            });
+        }
+
+        if (closeLoginModal) {
+            closeLoginModal.addEventListener('click', () => {
+                loginModal.classList.remove('active');
+            });
+        }
+
+        if (loginModal) {
+            loginModal.addEventListener('click', (e) => {
+                if (e.target === loginModal) {
+                    loginModal.classList.remove('active');
+                }
+            });
+        }
+
+        if (switchToSignup) {
+            switchToSignup.addEventListener('click', (e) => {
+                e.preventDefault();
+                loginModal.classList.remove('active');
+                if (signupModal) signupModal.classList.add('active');
+            });
+        }
+
+        if (switchToLogin) {
+            switchToLogin.addEventListener('click', (e) => {
+                e.preventDefault();
+                signupModal.classList.remove('active');
+                if (loginModal) loginModal.classList.add('active');
+            });
+        }
+
+        if (closeSignupModal) {
+            closeSignupModal.addEventListener('click', () => {
+                signupModal.classList.remove('active');
+            });
+        }
+
+        if (signupModal) {
+            signupModal.addEventListener('click', (e) => {
+                if (e.target === signupModal) {
+                    signupModal.classList.remove('active');
+                }
+            });
+        }
+
+        // --- Supabase Integration ---
+        const supabaseUrl = 'https://tiornpjjrtajnmgvoqfb.supabase.co';
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRpb3JucGpqcnRham5tZ3ZvcWZiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQzNzU3NTQsImV4cCI6MjA5OTk1MTc1NH0.KRiPpKDR8D1HKItFwBqb93Y5bLkLQTJWDA8fUchyd_E';
+        const supabaseClient = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+        async function loadDynamicContent() {
+            try {
+                // Fetch site_content
+                const { data: contentData, error: contentError } = await supabaseClient.from('site_content').select('*');
+                let newPrice = '700'; // default
+                if (contentData) {
+                    contentData.forEach(item => {
+                        if (item.id === 'cta_new_price') {
+                            newPrice = item.content;
+                        }
+                        // We map database IDs to DOM IDs. If the element exists, update its content.
+                        const el = document.getElementById('dyn_' + item.id);
+                        if (el) {
+                            if (el.tagName === 'IMG' || el.tagName === 'VIDEO' || el.tagName === 'SOURCE' || el.tagName === 'IFRAME') {
+                                el.src = item.content;
+                            } else if (el.tagName === 'A') {
+                                el.href = item.content;
+                            } else if (item.id === 'hero_poster_url') {
+                                const videoEl = document.getElementById('dyn_hero_video_url');
+                                if (videoEl) videoEl.poster = item.content;
+                            } else {
+                                el.textContent = item.content;
+                            }
+                        }
+
+                        // Special case for activation link which appears in two modals
+                        if (item.id === 'wa_activation_link') {
+                            const activationLinks = document.querySelectorAll('.wa_activation_link');
+                            activationLinks.forEach(link => {
+                                link.href = item.content;
+                            });
+                        }
+
+                        // Special case for site logo which appears in multiple places
+                        if (item.id === 'site_logo') {
+                            const logos = document.querySelectorAll('.dyn_site_logo');
+                            logos.forEach(logo => {
+                                if (logo.tagName === 'IMG') {
+                                    logo.src = item.content;
+                                } else if (logo.tagName === 'LINK') {
+                                    logo.href = item.content + "?v=" + new Date().getTime(); // Cache buster for favicon
+                                } else if (logo.tagName === 'META') {
+                                    logo.content = item.content;
+                                }
+                            });
+                        }
+                    });
+                }
+                
+                const titleEl = document.getElementById('paymentModalTitle');
+                if (titleEl) {
+                    titleEl.textContent = `اختر طريقة الدفع (${newPrice} ج.م)`;
+                }
+
+                // Fetch payment_methods
+                const { data: paymentMethods } = await supabaseClient.from('payment_methods').select('*').order('order_index', { ascending: true });
+                if (paymentMethods && paymentMethods.length > 0) {
+                    const pmContainer = document.getElementById('dynamicPaymentMethods');
+                    if (pmContainer) {
+                        pmContainer.innerHTML = '';
+                        paymentMethods.forEach((method, idx) => {
+                            pmContainer.innerHTML += `
+                                <label class="payment-card">
+                                    <input type="radio" name="payment_method" value="${method.name}" ${idx === 0 ? 'checked' : ''}>
+                                    <span class="card-content">${method.name} - رقم: <span dir="ltr">${method.number}</span></span>
+                                </label>
+                            `;
+                        });
+                    }
+                }
+
+                // Fetch features
+                const { data: featuresData } = await supabaseClient.from('features').select('*').order('order_index', { ascending: true });
+                if (featuresData && featuresData.length > 0) {
+                    const grid = document.getElementById('dyn_features_grid');
+                    if (grid) {
+                        grid.innerHTML = '';
+                        featuresData.forEach(feature => {
+                            grid.innerHTML += `
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <i class="fa-solid ${feature.icon}"></i>
+                                </div>
+                                <h3>${feature.title}</h3>
+                                <p>${feature.description}</p>
+                            </div>`;
+                        });
+                    }
+                }
+
+                // Fetch trainers
+                const { data: trainersData } = await supabaseClient.from('trainers').select('*').order('order_index', { ascending: true });
+                if (trainersData && trainersData.length > 0) {
+                    const grid = document.getElementById('dyn_trainers_grid');
+                    if (grid) {
+                        grid.innerHTML = '';
+                        trainersData.forEach(trainer => {
+                            grid.innerHTML += `
+                            <div class="trainer-card">
+                                <div class="trainer-img-wrapper">
+                                    <img src="${trainer.image_path}" alt="${trainer.name}" class="trainer-img">
+                                </div>
+                                <div class="trainer-info">
+                                    <h3>${trainer.name}</h3>
+                                    <p>${trainer.description}</p>
+                                </div>
+                            </div>`;
+                        });
+                    }
+                }
+
+                // Fetch curriculum
+                const { data: curriculumData } = await supabaseClient.from('curriculum').select('*').order('order_index', { ascending: true });
+                if (curriculumData && curriculumData.length > 0) {
+                    const container = document.getElementById('dyn_curriculum_container');
+                    if (container) {
+                        container.innerHTML = '';
+                        curriculumData.forEach(item => {
+                            container.innerHTML += `
+                            <div class="accordion-item">
+                                <button class="accordion-header">
+                                    <span class="accordion-title">${item.title}</span>
+                                    <span class="accordion-icon"><i class="fa-solid fa-plus"></i></span>
+                                </button>
+                                <div class="accordion-content">
+                                    <p>${item.content}</p>
+                                </div>
+                            </div>`;
+                        });
+                        // Re-initialize accordion logic for dynamically added elements
+                        reinitAccordion();
+                    }
+                }
+
+                // Fetch faqs
+                const { data: faqsData } = await supabaseClient.from('faqs').select('*').order('order_index', { ascending: true });
+                if (faqsData && faqsData.length > 0) {
+                    const grid = document.getElementById('dyn_faq_grid');
+                    if (grid) {
+                        grid.innerHTML = '';
+                        faqsData.forEach(item => {
+                            grid.innerHTML += `
+                            <div class="accordion-item faq-item">
+                                <button class="accordion-header">
+                                    <span class="accordion-title">${item.question}</span>
+                                    <span class="accordion-icon"><i class="fa-solid fa-plus"></i></span>
+                                </button>
+                                <div class="accordion-content">
+                                    <p>${item.answer}</p>
+                                </div>
+                            </div>`;
+                        });
+                        reinitAccordion();
+                    }
+                }
+                
+            } catch (err) {
+                console.error("Error loading dynamic content:", err);
+            }
+        }
+
+        function reinitAccordion() {
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+            // Remove old event listeners by replacing elements with clones
+            accordionHeaders.forEach(header => {
+                const newHeader = header.cloneNode(true);
+                header.parentNode.replaceChild(newHeader, header);
+                
+                newHeader.addEventListener('click', () => {
+                    const item = newHeader.parentElement;
+                    const isActive = item.classList.contains('active');
+                    
+                    document.querySelectorAll('.accordion-item').forEach(child => {
+                        child.classList.remove('active');
+                        const childIcon = child.querySelector('.fa-solid');
+                        if(childIcon) {
+                            childIcon.classList.remove('fa-minus');
+                            childIcon.classList.add('fa-plus');
+                        }
+                        const content = child.querySelector('.accordion-content');
+                        if(content) content.style.maxHeight = null;
+                    });
+
+                    if (!isActive) {
+                        item.classList.add('active');
+                        const icon = newHeader.querySelector('.fa-solid');
+                        if(icon) {
+                            icon.classList.remove('fa-plus');
+                            icon.classList.add('fa-minus');
+                        }
+                        const content = item.querySelector('.accordion-content');
+                        if(content) content.style.maxHeight = content.scrollHeight + "px";
+                    }
+                });
+            });
+        }
+
+        // --- Auth Logic ---
+        async function handleGoogleLogin() {
+            const { data, error } = await supabaseClient.auth.signInWithOAuth({ provider: 'google' });
+            if (error) showToast("حدث خطأ أثناء الاتصال بجوجل: " + error.message);
+        }
+
+        document.getElementById('googleLoginBtn')?.addEventListener('click', handleGoogleLogin);
+        document.getElementById('googleSignupBtn')?.addEventListener('click', handleGoogleLogin);
+
+        document.getElementById('supabaseLoginForm')?.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            const btn = document.getElementById('emailLoginBtn');
+            btn.textContent = 'جاري تسجيل الدخول...';
+            
+            const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
+            
+            if (error) {
+                showToast("فشل تسجيل الدخول: " + error.message);
+                btn.textContent = 'دخول';
+            } else {
+                loginModal.classList.remove('active');
+                btn.textContent = 'دخول';
+            }
+        });
+
+        document.getElementById('supabaseSignupForm')?.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('signupEmail').value;
+            const phone = document.getElementById('signupPhone').value;
+            const password = document.getElementById('signupPassword').value;
+            const confirmPassword = document.getElementById('signupConfirmPassword').value;
+
+            if (password !== confirmPassword) {
+                showToast("كلمتا المرور غير متطابقتين.");
+                return;
+            }
+
+            const btn = document.getElementById('emailSignupBtn');
+            btn.textContent = 'جاري إنشاء الحساب...';
+            
+            // Send phone number as user metadata
+            const { data, error } = await supabaseClient.auth.signUp({ 
+                email, 
+                password,
+                options: {
+                    data: {
+                        phone: phone
+                    }
+                }
+            });
+            
+            if (error) {
+                showToast("فشل إنشاء الحساب: " + error.message);
+                btn.textContent = 'إنشاء الحساب';
+            } else {
+                showToast("تم إرسال رابط تأكيد إلى بريدك الإلكتروني. يرجى مراجعة بريدك الوارد لتفعيل الحساب.", "success");
+                signupModal.classList.remove('active');
+                btn.textContent = 'إنشاء الحساب';
+            }
+        });
+
+        // Listen for Auth changes to update UI
+        supabaseClient.auth.onAuthStateChange(async (event, session) => {
+            const navCta = document.getElementById('nav-cta-container');
+            if (session && session.user) {
+                const user = session.user;
+                const userEmail = user.email;
+                let adminHtml = '';
+                
+                // Pre-fill registration modal
+                const regFullName = document.getElementById('regFullName');
+                if (regFullName && user.user_metadata?.full_name) {
+                    regFullName.value = user.user_metadata.full_name;
+                }
+                const regPhone = document.getElementById('regPhone');
+                if (regPhone && (user.user_metadata?.phone || user.phone)) {
+                    regPhone.value = user.user_metadata?.phone || user.phone;
+                }
+
+                // Check if user is admin
+                try {
+                    const { data: adminData } = await supabaseClient.from('admins').select('*').eq('email', userEmail).single();
+                    if (adminData) {
+                        adminHtml = `<a href="admin.html" class="btn-primary" style="background:#007bff; border-color:#007bff; color:white; margin-left:10px;"><i class="fa-solid fa-gear"></i> لوحة الإدارة</a>`;
+                    }
+                } catch(err) { console.error("Not an admin"); }
+
+                navCta.innerHTML = `
+                    ${adminHtml}
+                    <a href="#" class="btn-outline-login btn-logout" id="logoutBtn">تسجيل الخروج</a>
+                `;
+                document.getElementById('logoutBtn').addEventListener('click', async (e) => {
+                    e.preventDefault();
+                    await supabaseClient.auth.signOut();
+                });
+            } else {
+                navCta.innerHTML = `
+                    <a href="#login" class="btn-outline-login" id="loginBtn">تسجيل الدخول</a>
+                    <a href="#register" class="btn-primary">اشترك الآن</a>
+                `;
+                // Re-attach listener
+                document.getElementById('loginBtn').addEventListener('click', (e) => {
+                    e.preventDefault();
+                    document.getElementById('loginModal').classList.add('active');
+                });
+            }
+        });
+
+        // Receipt Image Preview
+        document.getElementById('receipt')?.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            const preview = document.getElementById('receiptPreview');
+            const icon = document.getElementById('receiptIcon');
+            const text = document.getElementById('receiptText');
+            
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                    if (icon) icon.style.display = 'none';
+                    if (text) text.style.display = 'none';
+                }
+                reader.readAsDataURL(file);
+            } else {
+                preview.src = '';
+                preview.style.display = 'none';
+                if (icon) icon.style.display = 'block';
+                if (text) text.style.display = 'block';
+            }
+        });        // SHA-256 Hashing helper for Facebook CAPI
+        async function hashData(string) {
+            const utf8 = new TextEncoder().encode(string.trim().toLowerCase());
+            const hashBuffer = await crypto.subtle.digest('SHA-256', utf8);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+
+        // Subscription form submission
+        document.getElementById('subscriptionForm')?.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('submitSubscriptionBtn');
+            const originalText = btn.textContent;
+            btn.textContent = 'جاري إرسال الطلب...';
+            btn.disabled = true;
+
+            try {
+                const fullName = document.getElementById('regFullName').value;
+                const phone = document.getElementById('regPhone').value;
+                const paymentMethod = document.querySelector('input[name="payment_method"]:checked').value;
+                const transferNumber = document.getElementById('transferNumber').value;
+                const fileInput = document.getElementById('receipt');
+
+                // Check if user already submitted a request
+                const { data: existingSubs, error: checkErr } = await supabaseClient
+                    .from('subscriptions')
+                    .select('id')
+                    .eq('phone', phone);
+                
+                if (existingSubs && existingSubs.length > 0) {
+                    document.getElementById('registerModal').classList.remove('active');
+                    const errModal = document.getElementById('whatsappErrorModal');
+                    if (errModal) errModal.classList.add('active');
+                    btn.textContent = originalText;
+                    btn.disabled = false;
+                    return;
+                }
+
+                if (fileInput.files.length === 0) {
+                    showToast('الرجاء اختيار صورة وصل التحويل.');
+                    btn.textContent = originalText;
+                    btn.disabled = false;
+                    return;
+                }
+
+                const file = fileInput.files[0];
+                const fileExt = file.name.split('.').pop();
+                const fileName = `${Date.now()}_${Math.random().toString(36).substring(7)}.${fileExt}`;
+                
+                // Upload receipt to Supabase Storage
+                const { data: uploadData, error: uploadError } = await supabaseClient
+                    .storage
+                    .from('receipts')
+                    .upload(`public/${fileName}`, file, {
+                        cacheControl: '3600',
+                        upsert: false
+                    });
+
+                if (uploadError) {
+                    throw new Error('فشل رفع صورة الوصل: تأكد من أنك قمت بإنشاء مجلد receipts وجعلته Public في Supabase.');
+                }
+
+                // Get public URL
+                const { data: publicUrlData } = supabaseClient.storage.from('receipts').getPublicUrl(`public/${fileName}`);
+                const receiptUrl = publicUrlData.publicUrl;
+
+                // Insert into subscriptions
+                const { error: insertError } = await supabaseClient.from('subscriptions').insert([{
+                    full_name: fullName,
+                    phone: phone,
+                    payment_method: paymentMethod,
+                    transfer_number: transferNumber,
+                    receipt_url: receiptUrl
+                }]);
+
+                if (insertError) {
+                    throw new Error('فشل في تسجيل الطلب: ' + insertError.message);
+                }
+
+                // Call Facebook Conversions API via Supabase Edge Function
+                try {
+                    const hashedPhone = await hashData(phone);
+                    const { data: { session } } = await supabaseClient.auth.getSession();
+                    const email = session?.user?.email || "";
+                    const hashedEmail = email ? await hashData(email) : undefined;
+                    
+                    await supabaseClient.functions.invoke('facebook-capi', {
+                        body: {
+                            event_name: 'CompleteRegistration',
+                            event_source_url: window.location.href,
+                            user_data: {
+                                ph: [hashedPhone],
+                                em: hashedEmail ? [hashedEmail] : undefined
+                            }
+                        }
+                    });
+                } catch (fbErr) {
+                    console.error("Facebook CAPI Error:", fbErr);
+                }
+
+                // Show WhatsApp Success Modal
+                document.getElementById('registerModal').classList.remove('active');
+                document.getElementById('subscriptionForm').reset();
+                
+                // Clear the image preview
+                const preview = document.getElementById('receiptPreview');
+                if (preview) {
+                    preview.src = '';
+                    preview.style.display = 'none';
+                }
+                const icon = document.getElementById('receiptIcon');
+                if (icon) icon.style.display = 'block';
+                const text = document.getElementById('receiptText');
+                if (text) text.style.display = 'block';
+                
+                // Open the WhatsApp modal
+                const waModal = document.getElementById('whatsappSuccessModal');
+                if (waModal) waModal.classList.add('active');
+
+            } catch (err) {
+                console.error(err);
+                showToast(err.message);
+            } finally {
+                btn.textContent = originalText;
+                btn.disabled = false;
+            }
+        });
+        
+        // WhatsApp Modal Close logic
+        const waModal = document.getElementById('whatsappSuccessModal');
+        const closeWaModal = document.getElementById('closeWhatsappModal');
+        if (closeWaModal && waModal) {
+            closeWaModal.addEventListener('click', () => {
+                waModal.classList.remove('active');
+            });
+        }
+        if (waModal) {
+            waModal.addEventListener('click', (e) => {
+                if (e.target === waModal) {
+                    waModal.classList.remove('active');
+                }
+            });
+        }
+
+        const waErrModal = document.getElementById('whatsappErrorModal');
+        const closeWaErrModal = document.getElementById('closeWhatsappErrorModal');
+        if (closeWaErrModal && waErrModal) {
+            closeWaErrModal.addEventListener('click', () => {
+                waErrModal.classList.remove('active');
+            });
+        }
+        if (waErrModal) {
+            waErrModal.addEventListener('click', (e) => {
+                if (e.target === waErrModal) {
+                    waErrModal.classList.remove('active');
+                }
+            });
+        }
+
+        window.addEventListener('DOMContentLoaded', loadDynamicContent);
+
+        // --- Chatbot Logic ---
+        let chatbotApiKey = '';
+        let chatbotSystemPrompt = '';
+        let chatbotKnowledge = '';
+        let chatbotModel = 'openai/gpt-4o-mini';
+        let chatbotLimitGuest = 3;
+        let chatbotLimitUser = 6;
+        let chatHistory = [];
+
+        async function initChatbot() {
+            const { data } = await supabaseClient.from('site_content').select('*').in('id', [
+                'chatbot_api_key', 'chatbot_system_prompt', 'chatbot_knowledge', 
+                'chatbot_model', 'chatbot_limit_guest', 'chatbot_limit_user'
+            ]);
+            if (data) {
+                data.forEach(item => {
+                    if (item.id === 'chatbot_api_key' && item.content) chatbotApiKey = item.content;
+                    if (item.id === 'chatbot_system_prompt' && item.content) chatbotSystemPrompt = item.content;
+                    if (item.id === 'chatbot_knowledge' && item.content) chatbotKnowledge = item.content;
+                    if (item.id === 'chatbot_model' && item.content) chatbotModel = item.content;
+                    if (item.id === 'chatbot_limit_guest' && item.content) chatbotLimitGuest = parseInt(item.content) || 3;
+                    if (item.id === 'chatbot_limit_user' && item.content) chatbotLimitUser = parseInt(item.content) || 6;
+                });
+            }
+            
+            // Set up initial system message
+            const systemContent = chatbotSystemPrompt + "\n\n" + chatbotKnowledge;
+            
+            // Load chat history from localStorage
+            const { data: { session } } = await supabaseClient.auth.getSession();
+            const isUser = !!session;
+            const historyKey = isUser ? `chatbot_history_${session.user.id}` : 'chatbot_history_guest';
+            
+            const savedHistory = JSON.parse(localStorage.getItem(historyKey) || '[]');
+            
+            if (savedHistory.length > 0) {
+                chatHistory = savedHistory;
+                // Update system prompt in case it changed in admin
+                if (chatHistory[0] && chatHistory[0].role === 'system') {
+                    chatHistory[0].content = systemContent;
+                } else {
+                    chatHistory.unshift({ role: 'system', content: systemContent });
+                }
+                
+                // Clear UI and render history
+                const msgs = document.getElementById('chatbotMessages');
+                msgs.innerHTML = '';
+                chatHistory.forEach(msg => {
+                    if (msg.role !== 'system') {
+                        addChatMessage(msg.role === 'assistant' ? 'bot' : 'user', msg.content);
+                    }
+                });
+            } else {
+                chatHistory = [{ role: 'system', content: systemContent }];
+                // Initial greeting
+                const msgs = document.getElementById('chatbotMessages');
+                msgs.innerHTML = '<div class="chat-message bot">مرحباً! أنا المساعد الذكي لموقع المحامي يحيى رضوان. كيف يمكنني مساعدتك اليوم؟</div>';
+            }
+        }
+
+        window.toggleChatbot = function() {
+            const win = document.getElementById('chatbotWindow');
+            win.style.display = win.style.display === 'flex' ? 'none' : 'flex';
+        };
+
+        function addChatMessage(role, content) {
+            const msgs = document.getElementById('chatbotMessages');
+            const div = document.createElement('div');
+            div.className = `chat-message ${role}`;
+            div.textContent = content;
+            msgs.appendChild(div);
+            msgs.scrollTop = msgs.scrollHeight;
+        }
+
+        async function checkRateLimit() {
+            const { data: { session } } = await supabaseClient.auth.getSession();
+            const isUser = !!session;
+            const limit = isUser ? chatbotLimitUser : chatbotLimitGuest;
+            const storageKey = isUser ? `chatbot_usage_${session.user.id}` : 'chatbot_usage_guest';
+            
+            let usage = JSON.parse(localStorage.getItem(storageKey) || '[]');
+            const now = Date.now();
+            const oneHourAgo = now - (60 * 60 * 1000);
+            
+            // Filter timestamps older than 1 hour
+            usage = usage.filter(timestamp => timestamp > oneHourAgo);
+            
+            if (usage.length >= limit) {
+                return false;
+            }
+            
+            // Add current timestamp and save
+            usage.push(now);
+            localStorage.setItem(storageKey, JSON.stringify(usage));
+            return true;
+        }
+
+        async function saveChatHistory() {
+            const { data: { session } } = await supabaseClient.auth.getSession();
+            const isUser = !!session;
+            const historyKey = isUser ? `chatbot_history_${session.user.id}` : 'chatbot_history_guest';
+            localStorage.setItem(historyKey, JSON.stringify(chatHistory));
+        }
+
+        async function logChatMessageToDB(role, content) {
+            try {
+                const { data: { session } } = await supabaseClient.auth.getSession();
+                const isUser = !!session;
+                const userId = isUser ? session.user.id : null;
+                
+                await supabaseClient.from('chat_logs').insert([{
+                    user_id: userId,
+                    is_guest: !isUser,
+                    role: role,
+                    content: content
+                }]);
+            } catch (err) {
+                console.error("Failed to log message to DB:", err);
+            }
+        }
+
+        document.getElementById('chatbotInputForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const input = document.getElementById('chatInput');
+            const text = input.value.trim();
+            if (!text) return;
+            
+            input.value = '';
+            addChatMessage('user', text);
+            
+            // Check Rate Limit BEFORE sending
+            const canSend = await checkRateLimit();
+            if (!canSend) {
+                addChatMessage('bot', "عذراً، لقد وصلت للحد الأقصى من الأسئلة المسموحة لك في هذه الساعة. يرجى المحاولة لاحقاً.");
+                return;
+            }
+
+            chatHistory.push({ role: 'user', content: text });
+            await saveChatHistory();
+            
+            // Fire and forget logging
+            logChatMessageToDB('user', text);
+            
+            const typing = document.getElementById('typingIndicator');
+            typing.style.display = 'block';
+            
+            try {
+                if (!chatbotApiKey) throw new Error('API Key is missing or invalid.');
+                const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${chatbotApiKey}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        model: chatbotModel,
+                        messages: chatHistory
+                    })
+                });
+                
+                const result = await response.json();
+                typing.style.display = 'none';
+                
+                if (result.choices && result.choices.length > 0) {
+                    const reply = result.choices[0].message.content;
+                    addChatMessage('bot', reply);
+                    chatHistory.push({ role: 'assistant', content: reply });
+                    await saveChatHistory();
+                    logChatMessageToDB('assistant', reply);
+                } else {
+                    addChatMessage('bot', "عذراً، يبدو أن هناك ضغطاً حالياً أو خطأ في الاتصال بالذكاء الاصطناعي.");
+                }
+            } catch (err) {
+                console.error(err);
+                typing.style.display = 'none';
+                addChatMessage('bot', "عذراً، حدث خطأ. تأكد من إعدادات المفتاح في لوحة التحكم.");
+            }
+        });
+        
+        // Load chatbot data after DOM loads
+        window.addEventListener('DOMContentLoaded', initChatbot);
+
+        // Custom Toast Notification System
+        function showToast(message, type = 'error') {
+            let container = document.getElementById('toast-container');
+            if (!container) {
+                container = document.createElement('div');
+                container.id = 'toast-container';
+                document.body.appendChild(container);
+            }
+            
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            const icon = type === 'error' ? 'fa-circle-exclamation' : 'fa-circle-check';
+            toast.innerHTML = `<i class="fa-solid ${icon}"></i> <span>${message}</span>`;
+            
+            container.appendChild(toast);
+            
+            // Trigger animation
+            setTimeout(() => toast.classList.add('show'), 10);
+            
+            // Remove after 4 seconds
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => toast.remove(), 400);
+            }, 4000);
+        }
+
+        // Password visibility toggles
+        document.querySelectorAll('.toggle-password').forEach(icon => {
+            icon.addEventListener('click', function() {
+                const input = this.parentElement.querySelector('input');
+                if (input.type === 'password') {
+                    input.type = 'text';
+                    this.classList.remove('fa-eye');
+                    this.classList.add('fa-eye-slash');
+                } else {
+                    input.type = 'password';
+                    this.classList.remove('fa-eye-slash');
+                    this.classList.add('fa-eye');
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>

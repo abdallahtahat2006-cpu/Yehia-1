@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم الشاملة - دورة الحماية من الابتزاز</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Cairo', sans-serif; background: #f4f7f6; margin: 0; padding: 0; color: #333; }
+        .container { max-width: 1200px; margin: 20px auto; padding: 20px; }
+        .header { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 20px; text-align: center; }
+        h1 { margin: 0; color: #d4af37; }
+        .section-box { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        .section-box h2 { border-bottom: 2px solid #f4f7f6; padding-bottom: 10px; margin-top: 0; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input[type="text"], input[type="number"], input[type="email"], input[type="password"], textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
+        
+        .admin-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+            flex-wrap: wrap;
+        }
+        .admin-tab {
+            padding: 10px 20px;
+            background: #f1f1f1;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            font-family: inherit;
+        }
+        .admin-tab.active {
+            background: #d4af37;
+            color: white;
+        }
+        .section-box { display: none; }
+        .section-box.active { display: block; }
+
+        input[type="file"] { border: 1px dashed #ccc; padding: 15px; width: 100%; box-sizing: border-box; cursor: pointer; }
+        button { background: #d4af37; color: #1a1a1a; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-size: 16px; font-family: 'Cairo', sans-serif; font-weight: bold; transition: 0.3s; }
+        button:hover { background: #b5952f; }
+        .btn-danger { background: #dc3545; color: white; }
+        .btn-danger:hover { background: #c82333; }
+        .btn-success { background: #28a745; color: white; display: block; width: 100%; margin-top: 15px; }
+        .btn-success:hover { background: #218838; }
+        .btn-add { background: #007bff; color: white; margin-bottom: 15px; }
+        .btn-add:hover { background: #0069d9; }
+        .item-row { border: 1px solid #eee; padding: 15px; margin-bottom: 15px; border-radius: 4px; background: #fafafa; position: relative; }
+        .item-row .delete-btn { position: absolute; top: 10px; left: 10px; }
+        .two-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .loader { text-align: center; font-size: 1.2em; padding: 50px; }
+        .toast { position: fixed; bottom: 20px; right: 20px; background: #28a745; color: white; padding: 15px 20px; border-radius: 4px; box-shadow: 0 2px 10px rgba(0,0,0,0.2); display: none; z-index: 1000; }
+        
+        #loginContainer { max-width: 400px; margin: 80px auto; }
+        .progress-bar { width: 100%; background-color: #e0e0e0; border-radius: 4px; overflow: hidden; display: none; margin-top: 10px; }
+        .progress-fill { height: 20px; background-color: #28a745; width: 0%; transition: width 0.3s; }
+        .video-preview { margin-top: 10px; color: #007bff; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>لوحة التحكم الشاملة (Admin Panel)</h1>
+        <p>تعديل نصوص الموقع، المحاور، الفيديوهات، الأسئلة الشائعة، والمدربين</p>
+    </div>
+
+
+
+    <div id="loader" class="loader" style="display: none;">جاري جلب البيانات...</div>
+    
+    <!-- Admin Content Section -->
+    <div id="content" style="display: block;">
+        <div class="admin-tabs">
+            <button type="button" class="admin-tab active" onclick="openTab('texts', this)">النصوص والأسعار</button>
+            <button type="button" class="admin-tab" onclick="openTab('faqs', this)">الأسئلة الشائعة</button>
+            <button type="button" class="admin-tab" onclick="openTab('curriculum', this)">محاور الدورة</button>
+            <button type="button" class="admin-tab" onclick="openTab('trainers', this)">المدربين</button>
+            <button type="button" class="admin-tab" onclick="openTab('features', this)">المميزات</button>
+            <button type="button" class="admin-tab" style="background: #2b2b2b; color: #fff;" onclick="openTab('chatbot', this)"><i class="fa-solid fa-robot"></i> الذكاء الاصطناعي</button>
+            <button type="button" class="admin-tab" style="background: #28a745; color: #fff;" onclick="openTab('subscriptions', this)"><i class="fa-solid fa-users"></i> الاشتراكات</button>
+            <button type="button" class="admin-tab" style="background: #17a2b8; color: #fff;" onclick="openTab('payment_methods', this)"><i class="fa-solid fa-credit-card"></i> طرق الدفع</button>
+        </div>
+
+        <!-- Static Text Settings -->
+        <div id="tab-texts" class="section-box active">
+            <h2>إعدادات النصوص العامة والأسعار</h2>
+            <form id="siteContentForm">
+                <div class="two-cols">
+                    <div class="form-group"><label>العنوان الرئيسي (Hero)</label><input type="text" id="hero_title"></div>
+                    <div class="form-group"><label>نص زر الاشتراك</label><input type="text" id="hero_cta_text"></div>
+                    <div class="form-group"><label>السعر القديم</label><input type="text" id="cta_old_price"></div>
+                    <div class="form-group"><label>السعر الجديد (الحالي)</label><input type="text" id="cta_new_price"></div>
+                    <div class="form-group" style="grid-column: span 2;"><label>الوصف الرئيسي</label><textarea id="hero_subtitle" rows="2"></textarea></div>
+                    <div class="form-group"><label>صورة الغلاف للفيديو (Poster)</label><input type="text" id="hero_poster_url" placeholder="ضع رابط الصورة هنا"></div>
+                    <div class="form-group">
+                        <label>صورة اللوجو (شعار الموقع)</label>
+                        <input type="file" accept="image/*" onchange="handleImageUpload(this)">
+                        <input type="hidden" id="site_logo" class="t-i">
+                        <img id="site_logo_preview" class="img-preview" src="" style="width: 80px; height: 80px; margin-top: 10px; border-radius: 5px; display: none; object-fit: contain; border: 1px solid #ccc; background: white;">
+                    </div>
+                </div>
+
+                <hr style="margin: 20px 0; border: 1px solid #eee;">
+                
+                <h3>إعدادات الفيديو التسويقي (يوتيوب)</h3>
+                <div class="form-group">
+                    <label>رابط التضمين (Embed URL) من يوتيوب</label>
+                    <input type="text" id="hero_video_url" placeholder="https://www.youtube.com/embed/znXb9dH_fcA" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; margin-top: 5px; font-family: Tahoma, Arial, sans-serif;" dir="ltr">
+                    <small style="color: gray; display: block; margin-top: 5px;">الصق رابط التضمين (Embed) من يوتيوب ليظهر في الصفحة الرئيسية.</small>
+                </div>
+
+                <hr style="margin: 20px 0; border: 1px solid #eee;">
+                
+                <h3>روابط التواصل (الواتساب)</h3>
+                <div class="two-cols">
+                    <div class="form-group">
+                        <label>رابط أيقونة الواتساب العائمة (على الجنب)</label>
+                        <input type="text" id="wa_floating_link" placeholder="https://wa.me/201..." dir="ltr">
+                    </div>
+                    <div class="form-group">
+                        <label>رابط زر حجز استشارة قانونية (أسفل الصفحة)</label>
+                        <input type="text" id="wa_consultation_link" placeholder="https://wa.me/201..." dir="ltr">
+                    </div>
+                    <div class="form-group" style="grid-column: span 2;">
+                        <label>رابط التواصل لتفعيل الاشتراك (يظهر بعد التسجيل)</label>
+                        <input type="text" id="wa_activation_link" placeholder="https://wa.me/201..." dir="ltr">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-success">حفظ النصوص العامة</button>
+            </form>
+        </div>
+
+        <!-- FAQs Management -->
+        <div id="tab-faqs" class="section-box">
+            <h2>الأسئلة الشائعة</h2>
+            <button class="btn-add" onclick="addFaq()"><i class="fa-solid fa-plus"></i> إضافة سؤال جديد</button>
+            <div id="faqsList"></div>
+            <button class="btn-success" onclick="saveFaqs()">حفظ الأسئلة الشائعة</button>
+        </div>
+
+        <!-- Curriculum Management -->
+        <div id="tab-curriculum" class="section-box">
+            <h2>محاور الدورة</h2>
+            <button class="btn-add" onclick="addCurriculum()"><i class="fa-solid fa-plus"></i> إضافة محور جديد</button>
+            <div id="curriculumList"></div>
+            <button class="btn-success" onclick="saveCurriculum()">حفظ المحاور</button>
+        </div>
+
+        <!-- Trainers Management -->
+        <div id="tab-trainers" class="section-box">
+            <h2>المدربين وخبراء الدورة</h2>
+            <button class="btn-add" onclick="addTrainer()"><i class="fa-solid fa-plus"></i> إضافة مدرب جديد</button>
+            <div id="trainersList"></div>
+            <button class="btn-success" onclick="saveTrainers()">حفظ بيانات المدربين</button>
+        </div>
+
+        <!-- Features Management -->
+        <div id="tab-features" class="section-box">
+            <h2>المميزات (لماذا هذه الدورة مختلفة؟)</h2>
+            <button class="btn-add" onclick="addFeature()"><i class="fa-solid fa-plus"></i> إضافة ميزة جديدة</button>
+            <div id="featuresList"></div>
+            <button class="btn-success" onclick="saveFeatures()">حفظ المميزات</button>
+        </div>
+
+        <!-- Chatbot Management -->
+        <div id="tab-chatbot" class="section-box">
+            <h2>إعدادات مساعد الذكاء الاصطناعي (Chatbot)</h2>
+            <form id="chatbotForm">
+                <div class="form-group">
+                    <label>مفتاح الربط (OpenRouter API Key)</label>
+                    <input type="text" id="chatbot_api_key" placeholder="sk-or-v1-..." dir="ltr" value="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">
+                </div>
+                <div class="two-cols">
+                    <div class="form-group">
+                        <label>نموذج الذكاء الاصطناعي (AI Model)</label>
+                        <input type="text" id="chatbot_model" placeholder="openai/gpt-4o-mini" dir="ltr" value="openai/gpt-4o-mini">
+                    </div>
+                    <div class="form-group">
+                        <label>الحد الأقصى للأسئلة في الساعة للزائر</label>
+                        <input type="number" id="chatbot_limit_guest" placeholder="3" min="1" value="3" dir="ltr">
+                    </div>
+                    <div class="form-group">
+                        <label>الحد الأقصى للأسئلة في الساعة للمشترك</label>
+                        <input type="number" id="chatbot_limit_user" placeholder="6" min="1" value="6" dir="ltr">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>التعليمات الأساسية (System Prompt)</label>
+                    <textarea id="chatbot_system_prompt" rows="3">أنت مساعد ذكي داخل موقع المحامي يحيى رضوان. مهمتك الإجابة على أسئلة الزوار بناءً على "ملف المعرفة" المرفق أدناه فقط. لا تجب من خارج هذا الملف، واستخدم نبرة مهنية ومحترمة ومصرية مفهومة.</textarea>
+                </div>
+                <div class="form-group">
+                    <label>ملف المعرفة (Knowledge Base)</label>
+                    <small style="color: gray; display: block; margin-bottom: 5px;">ضع هنا محتوى الملف الذي يجب أن يقرأ منه المساعد معلوماته ليرد على الزوار (يمكنك نسخه ولصقه هنا).</small>
+                    <textarea id="chatbot_knowledge" rows="15" dir="rtl"></textarea>
+                </div>
+                <button type="submit" class="btn-success">حفظ إعدادات الذكاء الاصطناعي</button>
+            </form>
+        </div>
+    </div>
+
+        <!-- Subscriptions Management -->
+        <div id="tab-subscriptions" class="section-box">
+            <h2>الاشتراكات وطلبات الدفع</h2>
+            <div style="overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse; text-align: right;" id="subscriptionsTable">
+                    <thead>
+                        <tr style="background: #f1f1f1; border-bottom: 2px solid #ddd;">
+                            <th style="padding: 10px;">الاسم</th>
+                            <th style="padding: 10px;">رقم الهاتف</th>
+                            <th style="padding: 10px;">طريقة الدفع</th>
+                            <th style="padding: 10px;">رقم التحويل</th>
+                            <th style="padding: 10px;">التاريخ</th>
+                            <th style="padding: 10px;">صورة الوصل</th>
+                            <th style="padding: 10px;">الحالة</th>
+                            <th style="padding: 10px;">إجراء</th>
+                        </tr>
+                    </thead>
+                    <tbody id="subscriptionsList">
+                        <!-- Filled by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Payment Methods Management -->
+        <div id="tab-payment_methods" class="section-box">
+            <h2>طرق الدفع (التي تظهر في نافذة الاشتراك)</h2>
+            <button class="btn-add" onclick="addPaymentMethod()"><i class="fa-solid fa-plus"></i> إضافة طريقة دفع</button>
+            <div id="paymentMethodsList"></div>
+            <button class="btn-success" onclick="savePaymentMethods()">حفظ طرق الدفع</button>
+        </div>
+    </div>
+</div>
+
+<div id="toast" class="toast">تم حفظ التعديلات بنجاح!</div>
+
+<script>
+    // Supabase Configuration
+    const supabaseUrl = 'https://tiornpjjrtajnmgvoqfb.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRpb3JucGpqcnRham5tZ3ZvcWZiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQzNzU3NTQsImV4cCI6MjA5OTk1MTc1NH0.KRiPpKDR8D1HKItFwBqb93Y5bLkLQTJWDA8fUchyd_E';
+    const supabaseClient = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+    function showToast(msg = 'تم حفظ التعديلات بنجاح!') {
+        const toast = document.getElementById('toast');
+        toast.innerText = msg;
+        toast.style.display = 'block';
+        setTimeout(() => { toast.style.display = 'none'; }, 3000);
+    }
+
+    // --- Tabs Logic ---
+    function openTab(tabId, btn) {
+        document.querySelectorAll('.section-box').forEach(el => el.classList.remove('active'));
+        document.querySelectorAll('.admin-tab').forEach(el => el.classList.remove('active'));
+        document.getElementById('tab-' + tabId).classList.add('active');
+        btn.classList.add('active');
+    }
+
+    // --- Admin Authentication ---
+    async function checkAuthStatus() {
+        loadAllData();
+    }
+
+    async function adminLogin() {
+        const email = document.getElementById('adminEmail').value;
+        const password = document.getElementById('adminPassword').value;
+        const btn = document.getElementById('loginBtn');
+        
+        if(!email || !password) return alert("أدخل البريد وكلمة المرور");
+        btn.innerText = 'جاري التحقق...';
+
+        const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+        if (error) {
+            alert('خطأ في تسجيل الدخول: ' + error.message);
+            btn.innerText = 'دخول للوحة التحكم';
+        } else {
+            verifyAdmin(data.user.email);
+        }
+    }
+
+    async function verifyAdmin(email) {
+        // التحقق هل هذا الايميل موجود في جدول الـ admins
+        const { data, error } = await supabase.from('admins').select('*').eq('email', email).single();
+        if (error || !data) {
+            alert('عذراً، هذا الحساب ليس لديه صلاحيات الإدارة.');
+            await supabase.auth.signOut();
+            document.getElementById('loginBtn').innerText = 'دخول للوحة التحكم';
+        } else {
+            // Admin verified!
+            document.getElementById('loginContainer').style.display = 'none';
+            loadAllData();
+        }
+    }
+
+    async function adminLogout() {
+        await supabase.auth.signOut();
+        location.reload();
+    }
+
+    // --- Video Upload Logic Removed ---
+
+    // --- Data Loading ---
+    async function loadAllData() {
+        document.getElementById('loader').style.display = 'block';
+        
+        try {
+            const { data: siteContent } = await supabaseClient.from('site_content').select('*');
+            if (siteContent) {
+                siteContent.forEach(item => {
+                    const el = document.getElementById(item.id);
+                    if (el) el.value = item.content;
+                    if (item.id === 'hero_video_url' && item.content) {
+                        // Just let it populate the text input
+                    }
+                    if (item.id === 'site_logo' && item.content) {
+                        const preview = document.getElementById('site_logo_preview');
+                        if (preview) {
+                            preview.src = item.content;
+                            preview.style.display = 'block';
+                        }
+                    }
+                });
+            }
+
+            const { data: faqs } = await supabaseClient.from('faqs').select('*').order('order_index');
+            document.getElementById('faqsList').innerHTML = '';
+            if (faqs) faqs.forEach(item => renderFaq(item));
+
+            const { data: curriculum } = await supabaseClient.from('curriculum').select('*').order('order_index');
+            document.getElementById('curriculumList').innerHTML = '';
+            if (curriculum) curriculum.forEach(item => renderCurriculum(item));
+
+            const { data: trainers } = await supabaseClient.from('trainers').select('*').order('order_index');
+            document.getElementById('trainersList').innerHTML = '';
+            if (trainers) trainers.forEach(item => renderTrainer(item));
+
+            const { data: features } = await supabaseClient.from('features').select('*').order('order_index');
+            document.getElementById('featuresList').innerHTML = '';
+            if (features) features.forEach(item => renderFeature(item));
+
+            const { data: pMethods } = await supabaseClient.from('payment_methods').select('*').order('order_index');
+            document.getElementById('paymentMethodsList').innerHTML = '';
+            if (pMethods) pMethods.forEach(item => renderPaymentMethod(item));
+
+            await loadSubscriptions();
+
+            document.getElementById('loader').style.display = 'none';
+            document.getElementById('content').style.display = 'block';
+        } catch (error) {
+            console.error(error);
+            alert("حدث خطأ. تأكد من إعداد الجداول وقاعدة البيانات بشكل صحيح.");
+        }
+    }
+
+    // --- Save Site Content ---
+    document.getElementById('siteContentForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const inputs = e.target.querySelectorAll('input[type="text"], input[type="hidden"], textarea');
+        const updates = Array.from(inputs).map(input => ({ id: input.id, content: input.value, type: 'text' }));
+        const { error } = await supabaseClient.from('site_content').upsert(updates);
+        if (error) alert("خطأ في الحفظ"); else showToast();
+    });
+
+    // --- Save Chatbot Settings ---
+    document.getElementById('chatbotForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const inputs = e.target.querySelectorAll('input[type="text"], input[type="number"], textarea');
+        const updates = Array.from(inputs).map(input => ({ id: input.id, content: input.value, type: 'text' }));
+        const { error } = await supabaseClient.from('site_content').upsert(updates);
+        if (error) alert("خطأ في حفظ إعدادات الذكاء الاصطناعي"); else showToast('تم تحديث عقل المساعد الذكي بنجاح!');
+    });
+
+    // --- FAQs ---
+    function renderFaq(item) {
+        const div = document.createElement('div');
+        div.className = 'item-row faq-row';
+        div.innerHTML = `
+            <button type="button" class="btn-danger delete-btn" onclick="this.parentElement.remove()"><i class="fa-solid fa-trash"></i></button>
+            <div class="form-group"><label>السؤال</label><input type="text" class="f-q" value="${item.question || ''}"></div>
+            <div class="form-group"><label>الإجابة</label><textarea class="f-a" rows="2">${item.answer || ''}</textarea></div>
+        `;
+        document.getElementById('faqsList').appendChild(div);
+    }
+    function addFaq() { renderFaq({question: '', answer: ''}); }
+    async function saveFaqs() {
+        const rows = document.querySelectorAll('.f-row');
+        await supabaseClient.from('faqs').delete().neq('id', '00000000-0000-0000-0000-000000000000');
+        const inserts = Array.from(rows).map((row, idx) => ({ question: row.querySelector('.f-q').value, answer: row.querySelector('.f-a').value, order_index: idx + 1 }));
+        if(inserts.length > 0) await supabaseClient.from('faqs').insert(inserts);
+        showToast(); loadAllData();
+    }
+
+    // --- Curriculum ---
+    function renderCurriculum(item) {
+        const div = document.createElement('div');
+        div.className = 'item-row c-row';
+        div.innerHTML = `
+            <button type="button" class="btn-danger delete-btn" onclick="this.parentElement.remove()"><i class="fa-solid fa-trash"></i></button>
+            <div class="form-group"><label>عنوان الوحدة</label><input type="text" class="c-t" value="${item.title || ''}"></div>
+            <div class="form-group"><label>محتوى الوحدة</label><textarea class="c-d" rows="2">${item.content || ''}</textarea></div>
+        `;
+        document.getElementById('curriculumList').appendChild(div);
+    }
+    function addCurriculum() { renderCurriculum({title: '', content: ''}); }
+    async function saveCurriculum() {
+        const rows = document.querySelectorAll('.c-row');
+        await supabaseClient.from('curriculum').delete().neq('id', '00000000-0000-0000-0000-000000000000');
+        const inserts = Array.from(rows).map((row, idx) => ({ title: row.querySelector('.c-t').value, content: row.querySelector('.c-d').value, order_index: idx + 1 }));
+        if(inserts.length > 0) await supabaseClient.from('curriculum').insert(inserts);
+        showToast(); loadAllData();
+    }
+
+    // --- Image Upload Logic ---
+    function handleImageUpload(inputEl) {
+        const file = inputEl.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const img = new Image();
+            img.onload = function() {
+                const canvas = document.createElement('canvas');
+                const MAX_WIDTH = 400;
+                const MAX_HEIGHT = 400;
+                let width = img.width;
+                let height = img.height;
+
+                if (width > height) {
+                    if (width > MAX_WIDTH) {
+                        height *= MAX_WIDTH / width;
+                        width = MAX_WIDTH;
+                    }
+                } else {
+                    if (height > MAX_HEIGHT) {
+                        width *= MAX_HEIGHT / height;
+                        height = MAX_HEIGHT;
+                    }
+                }
+                canvas.width = width;
+                canvas.height = height;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0, width, height);
+                const dataUrl = canvas.toDataURL('image/jpeg', 0.8);
+                
+                // Set the hidden input value
+                inputEl.parentElement.querySelector('.t-i').value = dataUrl;
+                // Show preview
+                const preview = inputEl.parentElement.querySelector('.img-preview');
+                preview.src = dataUrl;
+                preview.style.display = 'block';
+            }
+            img.src = e.target.result;
+        }
+        reader.readAsDataURL(file);
+    }
+
+    // --- Trainers ---
+    function renderTrainer(item) {
+        const div = document.createElement('div');
+        div.className = 'item-row tr-row';
+        const hasImage = item.image_path && item.image_path.length > 0;
+        div.innerHTML = `
+            <button type="button" class="btn-danger delete-btn" onclick="this.parentElement.remove()"><i class="fa-solid fa-trash"></i></button>
+            <div class="two-cols">
+                <div class="form-group"><label>اسم المدرب</label><input type="text" class="t-n" value="${item.name || ''}"></div>
+                <div class="form-group">
+                    <label>صورة المدرب</label>
+                    <input type="file" accept="image/*" onchange="handleImageUpload(this)">
+                    <input type="hidden" class="t-i" value="${item.image_path || ''}">
+                    <img class="img-preview" src="${item.image_path || ''}" style="width: 80px; height: 80px; margin-top: 10px; border-radius: 5px; display: ${hasImage ? 'block' : 'none'}; object-fit: cover; border: 1px solid #ccc;">
+                </div>
+            </div>
+            <div class="form-group"><label>نبذة عن المدرب</label><textarea class="t-d" rows="2">${item.description || ''}</textarea></div>
+        `;
+        document.getElementById('trainersList').appendChild(div);
+    }
+    function addTrainer() { renderTrainer({name: '', description: '', image_path: ''}); }
+    async function saveTrainers() {
+        const rows = document.querySelectorAll('.tr-row');
+        await supabaseClient.from('trainers').delete().neq('id', '00000000-0000-0000-0000-000000000000');
+        const inserts = Array.from(rows).map((row, idx) => ({ name: row.querySelector('.t-n').value, description: row.querySelector('.t-d').value, image_path: row.querySelector('.t-i').value, order_index: idx + 1 }));
+        if(inserts.length > 0) await supabaseClient.from('trainers').insert(inserts);
+        showToast(); loadAllData();
+    }
+
+    // --- Features ---
+    function renderFeature(item) {
+        const div = document.createElement('div');
+        div.className = 'item-row fe-row';
+        div.innerHTML = `
+            <button type="button" class="btn-danger delete-btn" onclick="this.parentElement.remove()"><i class="fa-solid fa-trash"></i></button>
+            <div class="two-cols">
+                <div class="form-group"><label>عنوان الميزة</label><input type="text" class="fe-t" value="${item.title || ''}"></div>
+                <div class="form-group"><label>أيقونة (FontAwesome)</label><input type="text" class="fe-i" value="${item.icon || 'fa-star'}"></div>
+            </div>
+            <div class="form-group"><label>وصف الميزة</label><textarea class="fe-d" rows="2">${item.description || ''}</textarea></div>
+        `;
+        document.getElementById('featuresList').appendChild(div);
+    }
+    function addFeature() { renderFeature({title: '', description: '', icon: 'fa-star'}); }
+    async function saveFeatures() {
+        const rows = document.querySelectorAll('.fe-row');
+        await supabaseClient.from('features').delete().neq('id', '00000000-0000-0000-0000-000000000000');
+        const inserts = Array.from(rows).map((row, idx) => ({ title: row.querySelector('.fe-t').value, description: row.querySelector('.fe-d').value, icon: row.querySelector('.fe-i').value, order_index: idx + 1 }));
+        if(inserts.length > 0) await supabaseClient.from('features').insert(inserts);
+        showToast(); loadAllData();
+    }
+    // --- Payment Methods ---
+    function renderPaymentMethod(item) {
+        const div = document.createElement('div');
+        div.className = 'item-row pm-row';
+        div.innerHTML = `
+            <button type="button" class="btn-danger delete-btn" onclick="this.parentElement.remove()"><i class="fa-solid fa-trash"></i></button>
+            <div class="two-cols">
+                <div class="form-group"><label>اسم طريقة الدفع (مثال: إنستا باي)</label><input type="text" class="pm-n" value="${item.name || ''}"></div>
+                <div class="form-group"><label>رقم التحويل (أو التفاصيل)</label><input type="text" class="pm-num" value="${item.number || ''}" dir="ltr"></div>
+            </div>
+        `;
+        document.getElementById('paymentMethodsList').appendChild(div);
+    }
+    function addPaymentMethod() { renderPaymentMethod({name: '', number: ''}); }
+    async function savePaymentMethods() {
+        const rows = document.querySelectorAll('.pm-row');
+        await supabaseClient.from('payment_methods').delete().neq('id', '00000000-0000-0000-0000-000000000000');
+        const inserts = Array.from(rows).map((row, idx) => ({ 
+            name: row.querySelector('.pm-n').value, 
+            number: row.querySelector('.pm-num').value, 
+            order_index: idx + 1 
+        }));
+        if(inserts.length > 0) await supabaseClient.from('payment_methods').insert(inserts);
+        showToast('تم حفظ طرق الدفع بنجاح!'); loadAllData();
+    }
+    // --- Subscriptions ---
+    async function loadSubscriptions() {
+        const list = document.getElementById('subscriptionsList');
+        list.innerHTML = '<tr><td colspan="8" style="text-align: center; padding: 20px;">جاري تحميل الطلبات...</td></tr>';
+        
+        try {
+            const { data, error } = await supabaseClient
+                .from('subscriptions')
+                .select('*')
+                .order('created_at', { ascending: false });
+                
+            if (error) throw error;
+            
+            list.innerHTML = '';
+            if (!data || data.length === 0) {
+                list.innerHTML = '<tr><td colspan="8" style="text-align: center; padding: 20px;">لا توجد طلبات اشتراك حالياً.</td></tr>';
+                return;
+            }
+            
+            data.forEach(sub => {
+                const tr = document.createElement('tr');
+                tr.style.borderBottom = '1px solid #eee';
+                
+                const statusBadge = sub.status === 'paid' 
+                    ? '<span style="background: #28a745; color: white; padding: 5px 10px; border-radius: 20px; font-size: 12px;">مفعل (تم الدفع)</span>'
+                    : '<span style="background: #ffc107; color: #333; padding: 5px 10px; border-radius: 20px; font-size: 12px;">قيد المراجعة</span>';
+                    
+                const actionBtn = sub.status !== 'paid'
+                    ? `<button onclick="markAsPaid('${sub.id}')" style="background: #28a745; font-size: 14px; padding: 5px 10px;">تأكيد الدفع</button>`
+                    : `<span style="color: gray; font-size: 14px;">مكتمل</span>`;
+
+                tr.innerHTML = `
+                    <td style="padding: 10px;">${sub.full_name || '-'}</td>
+                    <td style="padding: 10px;" dir="ltr">${sub.phone || '-'}</td>
+                    <td style="padding: 10px;">${sub.payment_method === 'instapay' ? 'إنستا باي' : (sub.payment_method === 'vodafone' ? 'فودافون كاش' : sub.payment_method)}</td>
+                    <td style="padding: 10px;">${sub.transfer_number || '-'}</td>
+                    <td style="padding: 10px;" dir="ltr">${new Date(sub.created_at).toLocaleDateString('en-GB')}</td>
+                    <td style="padding: 10px;">
+                        <a href="${sub.receipt_url}" target="_blank" style="background: #007bff; color: white; padding: 5px 10px; border-radius: 4px; text-decoration: none; font-size: 14px;"><i class="fa-solid fa-image"></i> عرض الوصل</a>
+                    </td>
+                    <td style="padding: 10px;">${statusBadge}</td>
+                    <td style="padding: 10px;">${actionBtn}</td>
+                `;
+                list.appendChild(tr);
+            });
+        } catch (err) {
+            console.error("Error loading subscriptions:", err);
+            list.innerHTML = '<tr><td colspan="8" style="text-align: center; padding: 20px; color: red;">فشل تحميل الطلبات.</td></tr>';
+        }
+    }
+
+    window.markAsPaid = async function(id) {
+        if (!confirm("هل أنت متأكد من تفعيل هذا الاشتراك وتأكيد الدفع؟")) return;
+        
+        try {
+            const { error } = await supabaseClient
+                .from('subscriptions')
+                .update({ status: 'paid' })
+                .eq('id', id);
+                
+            if (error) throw error;
+            showToast('تم تأكيد الدفع وتفعيل الاشتراك!');
+            loadSubscriptions(); // Refresh
+        } catch (err) {
+            alert('حدث خطأ: ' + err.message);
+        }
+    };
+
+    window.addEventListener('DOMContentLoaded', checkAuthStatus);
+</script>
+
+</body>
+</html>
