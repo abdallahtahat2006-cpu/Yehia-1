@@ -1460,7 +1460,14 @@
                 let currentApiKey = (keysData && keysData.content) ? keysData.content.replace(/[^a-zA-Z0-9\-_]/g, '') : '';
                 let currentModel = (modelData && modelData.content) ? modelData.content.trim() : chatbotModel;
 
-                if (!currentApiKey) throw new Error('مفتاح الربط (API Key) غير موجود أو غير صالح. يرجى إضافته من لوحة التحكم بشكل صحيح.');
+                if (!currentApiKey) {
+                    throw new Error('مفتاح الربط (API Key) غير موجود. يرجى إضافته من لوحة التحكم.');
+                }
+                
+                // Validate that the key is actually an OpenRouter key
+                if (!currentApiKey.startsWith('sk-or-')) {
+                    throw new Error('مفتاح الربط المدخل غير صالح. مفاتيح OpenRouter يجب أن تبدأ بـ "sk-or-". تأكد من أنك لم تنسخ مفتاحاً لمنصة أخرى بالخطأ.');
+                }
                 
                 const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
                     method: 'POST',
